@@ -45,7 +45,7 @@ const Register = function() {
             setTimeout(() =>{
                 setToastIsOpen(false);
             }, 1000 * 3)
-            setToastMessage(data.message)
+            setToastMessage(data.message);
         }
     };
     
