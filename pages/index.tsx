@@ -1,10 +1,19 @@
+import { GetStaticProps } from 'next';
 import Head from 'next/head';
+import { ReactNode } from "react";
 import CardsSection from '../src/components/homeNoAuth/cardsSection';
 import HeaderNoAuth from '../src/components/homeNoAuth/headerNoAuth';
+import SlideSection from '../src/components/homeNoAuth/slideSection';
 import PresentationSection from '../src/components/homeNoAuth/presentationSection';
+import projetService, { ProjectType } from '../src/services/projectService';
 import styles from '../styles/HomeNoAuth.module.scss';
 
-const HomeNoAuth = ()=> {
+interface IndexPageProps {
+  chrildren?: ReactNode;
+  project: ProjectType[];
+}
+
+const HomeNoAuth = ({ project }: IndexPageProps)=> {
   return (
     <>
       <Head>
@@ -21,9 +30,20 @@ const HomeNoAuth = ()=> {
           <PresentationSection />
         </div>
         <CardsSection />
+        <SlideSection newestProjects={project}/>
       </main>
     </>
   );
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  const res = await projetService.getNewestProjects();
+  return {
+    props: {
+      project: res.data,
+    },
+    revalidate: 3600 * 24, 
+  };
 };
 
 export default HomeNoAuth;
