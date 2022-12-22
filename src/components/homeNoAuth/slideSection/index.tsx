@@ -11,7 +11,7 @@ interface props {
 
 const SlideSection = function ( {newestProjects} : props) {
     return <>
-    <Container>
+    <Container className="d-flex flex-column align-items-center py-5">
         <p className={styles.sectionTitle}>MEUS PROJETOS E CONQUISTAS</p>
         <SlideComponent project={newestProjects} />
         <Link href="/register">
