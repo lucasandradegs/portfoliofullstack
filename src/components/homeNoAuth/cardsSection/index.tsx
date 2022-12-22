@@ -24,21 +24,16 @@ const CardsSection = function() {
                 </p>
             </div>
             <div className={styles.card4}>
-                <p className={styles.cardTitle} >OI</p>
+                <p className={styles.cardTitle} >CARREIRA</p>
                 <p className={styles.cardDescription}>
-                    MySQL WorkBench, Postgres
+                    MINHAS CONQUISTAS DURANTE MINHA CARREIRA
                 </p>
             </div>
             <div className={styles.card5}>
                 <p className={styles.cardTitle} >FORMAÇÃO</p>
                 <p className={styles.cardDescription}>
-                    MySQL WorkBench, Postgres
-                </p>
-            </div>
-            <div className={styles.card6}>
-                <p className={styles.cardTitle} >TESTE</p>
-                <p className={styles.cardDescription}>
-                    MySQL WorkBench, Postgres
+                    GRADUAÇÃO: CENTRO UNIVERSITÁRIO CATÓLICA DO LESTE DE MINAS GERAIS - UNILESTE (CURSANDO) <br/>
+                    CURSO TÉNICO: DESENVOLVIMENTO DE SISTEMAS - SENAC
                 </p>
             </div>
         </Container>

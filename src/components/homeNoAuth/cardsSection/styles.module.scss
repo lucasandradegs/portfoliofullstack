@@ -37,17 +37,17 @@
 
 .card1 {
     @extend .card; 
-    background-image: url("../../../../public/homeNoAuth/imgFrontend.jpeg"); 
+    background-image: url("../../../../public/homeNoAuth/imgFrontend.png"); 
 }
 
 .card2 {
     @extend .card; 
-    background-image: url("../../../../public/homeNoAuth/imgBackend.jpeg"); 
+    background-image: url("../../../../public/homeNoAuth/imgBackend.png"); 
 }
 
 .card3 {
     @extend .card; 
-    background-image: url("../../../../public/homeNoAuth/imgCareer.png"); 
+    background-image: url("../../../../public/homeNoAuth/imgDb.png"); 
 }
 .card4 {
     @extend .card; 
@@ -55,9 +55,9 @@
 }
 .card5 {
     @extend .card; 
-    background-image: url("../../../../public/homeNoAuth/imgCareer.png"); 
+    background-image: url("../../../../public/homeNoAuth/imgDegree.png"); 
 }
 .card6 {
     @extend .card; 
-    background-image: url("../../../../public/homeNoAuth/imgCareer.png"); 
+    background-image: url("../../../../public/homeNoAuth/imgDegree.png"); 
 }
