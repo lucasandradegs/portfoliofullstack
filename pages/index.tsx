@@ -8,6 +8,9 @@ import PresentationSection from '../src/components/homeNoAuth/presentationSectio
 import projetService, { ProjectType } from '../src/services/projectService';
 import styles from '../styles/HomeNoAuth.module.scss';
 import Footer from '../src/components/common/footer';
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 interface IndexPageProps {
   chrildren?: ReactNode;
@@ -15,6 +18,11 @@ interface IndexPageProps {
 }
 
 const HomeNoAuth = ({ project }: IndexPageProps)=> {
+    
+  useEffect(() => {
+    AOS.init();
+  }, []);
+  
   return (
     <>
       <Head>
@@ -26,12 +34,16 @@ const HomeNoAuth = ({ project }: IndexPageProps)=> {
         />
       </Head>
       <main>
-        <div className={styles.sectionBackground}>
+        <div className={styles.sectionBackground} data-aos="fade-zoom-in" data-aos-duration="1600">
           <HeaderNoAuth/>
           <PresentationSection />
         </div>
-        <CardsSection />
+        <div data-aos="fade-right" data-aos-duration="1200">
+          <CardsSection />
+        </div>
+        <div data-aos="fade-up" data-aos-duration="1350" >
         <SlideSection newestProjects={project}/>
+        </div>
         <Footer/>
       </main>
     </>
