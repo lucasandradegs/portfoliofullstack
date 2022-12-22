@@ -7,6 +7,7 @@ import SlideSection from '../src/components/homeNoAuth/slideSection';
 import PresentationSection from '../src/components/homeNoAuth/presentationSection';
 import projetService, { ProjectType } from '../src/services/projectService';
 import styles from '../styles/HomeNoAuth.module.scss';
+import Footer from '../src/components/common/footer';
 
 interface IndexPageProps {
   chrildren?: ReactNode;
@@ -31,6 +32,7 @@ const HomeNoAuth = ({ project }: IndexPageProps)=> {
         </div>
         <CardsSection />
         <SlideSection newestProjects={project}/>
+        <Footer/>
       </main>
     </>
   );

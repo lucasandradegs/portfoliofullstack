@@ -1,0 +1,54 @@
+@import "../../../../styles/colors.module.scss";
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 26px 0px;
+}
+
+.footerLogo {
+    width:  800px;
+}
+
+.footerLink {
+    text-decoration: none;
+    color: $mediumGray;
+    transition: 0.3s;
+
+    &:hover{
+        color: $lightGray;
+    }
+}
+
+@media (max-width: 1200px){
+    .footerLogo{
+        width: 600px;
+    }
+}
+
+@media (max-width: 883px){
+    .footer{
+        justify-content: center;
+    }
+    .footerLogo{
+        width: 400px;
+    }
+}
+@media (max-width: 992px){
+    .footerLogo{
+        width: 400px;
+    }
+    .footer{
+        justify-content: center;
+    }
+}
+@media (max-width: 400px){
+    .footerLogo{
+        width: 200px;
+    }
+    .footer{
+        justify-content: center;
+    }
+}
