@@ -26,8 +26,23 @@ const projetService = {
         });
 
         return res;
-    }
+    },
 
+    getFeaturedProjects: async () => {
+        const token = sessionStorage.getItem("portfolio-token");
+
+        const res = await api.get("/projects/featured", {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        }).catch((error) => {
+            console.log(error.response.data.message);
+
+            return error.response;
+        });
+
+        return res;
+    },
 };
 
-export default projetService
+export default projetService;
