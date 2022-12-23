@@ -16,11 +16,7 @@ const FeaturedSection = function () {
         {
             
              data.data?.map((project: ProjectType) => (
-                <div style={{ backgroundImage: `linear-gradient(to bottom, #6666661a, #151515), url(${process.env.NEXT_PUBLIC_BASEURL}/${project.thumbnailUrl})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                height: "480px"
-                 }} 
+                <div className={styles.backGroundImg}
                  key={project.id}>
                     <HeaderAuth />
                     <Container className="pt-4">
