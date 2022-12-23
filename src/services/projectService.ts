@@ -20,7 +20,6 @@ export type ProjectType = {
 const projetService = {
     getNewestProjects: async ()=>{
         const res = await api.get("/projects/newest").catch((error) => {
-            console.log(error.response.data.message);
 
             return error.response;
         });
@@ -36,12 +35,50 @@ const projetService = {
                 Authorization: `Bearer ${token}`,
             },
         }).catch((error) => {
-            console.log(error.response.data.message);
 
             return error.response;
         });
 
         return res;
+    },
+
+    addToFav: async (projectId: number | string) => {
+        const token = sessionStorage.getItem("portfolio-token");
+
+        const res = await api.post("/favorites", {projectId}, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).catch((error) =>{
+            return error.response;
+        });
+
+        return res;
+    },
+    removeFav: async (projectId: number | string) => {
+        const token = sessionStorage.getItem("portfolio-token");
+
+        const res = await api.delete("/favorites", {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+            data: { projectId }, 
+        }).catch((error) => {
+            return error.response;
+        });
+
+        return res;
+    },
+    getFavProjects: async () => {
+        const token = sessionStorage.getItem("portfolio-token");
+
+        const res = await api.get("/favorites", {
+            headers: {Authorization: `Bearer ${token}`},
+        }).catch((error) => {
+            return error.response;
+        });
+
+        return res
     },
 };
 
