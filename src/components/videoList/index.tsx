@@ -1,0 +1,45 @@
+import styles from "./styles.module.scss";
+
+import { VideoType } from "../../services/projectService";
+
+interface props {
+    video: VideoType;
+}
+
+const VideoList = function ({ video }: props) {
+    const handleSecondsToMin = (totalSeconds: number) => {
+        const minutes = Math.floor(totalSeconds / 60);
+
+        const seconds = totalSeconds % 60;
+
+        function toString (num: number) {
+            return num.toString().padStart(2, "0");
+        }
+
+        const result = `${toString(minutes)}:${toString(seconds)}`;
+
+        return result;
+    };
+
+    return (
+        <>
+        <div className={styles.videoCard}>
+            <div className={styles.videoOrderTime}>
+                <p className={styles.videoOrder}>Video de apresentação N.º {video.order}</p>
+                <p className={styles.videoTime}>{handleSecondsToMin(video.secondsLong)}</p>
+            </div>
+            <div className={styles.videoTitleDescription}>
+                <p className={styles.videoTitle}>{video.name}</p>
+                <p className={styles.videoDescription}>
+                {video.synopsis}
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Itaque ratione modi soluta, temporibus debitis aliquam illo delectus at, nihil eos repellendus explicabo excepturi quo distinctio nemo est labore et quia, provident doloribus?
+                Impedit, sapiente quos. Esse ut temporibus minus consectetur, cupiditate aut blanditiis ratione 
+                illo natus iure, est maxime voluptatum. <br />Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, vitae?</p>
+            </div>
+        </div>     
+        </>     
+    );
+};
+
+export default VideoList;

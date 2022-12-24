@@ -58,11 +58,10 @@ const projetService = {
     removeFav: async (projectId: number | string) => {
         const token = sessionStorage.getItem("portfolio-token");
 
-        const res = await api.delete("/favorites", {
+        const res = await api.delete(`/favorites/${projectId}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
-            data: { projectId }, 
         }).catch((error) => {
             return error.response;
         });

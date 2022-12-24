@@ -1,0 +1,65 @@
+@import "../../../styles/colors.module.scss";
+
+.videoCard {
+    border: 1px solid $lightGray;
+    margin-bottom: 20px;
+    width: 550px;
+    height: 190px;
+    cursor: pointer;
+    padding: 10px 14px;
+    overflow: hidden;
+    transition: 0.5s;
+    &:hover {
+        border-color: $lightRed;
+        height: 210px;
+    }
+}
+
+.videoOrderTime {
+    display: flex;
+    justify-content: center;
+    gap: 10px
+}
+
+.videoOrder {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.videoTime {
+    color: $lightGray;
+}
+.videoTitleDescription {
+    text-align: center;
+    margin: 10px 0px;
+}
+
+.videoTitle {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.videoDescription {
+    color: $lightGray;
+}
+
+@media (max-width: 570px) {
+    .videoCard {
+        width: 95%;
+    }
+}
+
+@media(max-width: 400px) {
+    .videoOrderTime {
+        gap: 25px;
+    }
+
+    .videoTitle {
+        font-size: 18px;
+    }
+    .videoDescription {
+        word-break: break-all;
+        font-size: 14px;
+    }
+}
