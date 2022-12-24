@@ -92,6 +92,43 @@ const projetService = {
 
         return res;
     },
+
+    getVideos: async (id: number | string)=> {
+        const token = sessionStorage.getItem("portfolio-token");
+    
+        const res = await api.get(`/projects/${id}`, {
+            headers: {Authorization: `Bearer ${token}`},
+        }).catch((error) => {
+            return error.response;
+        });
+
+        return res;
+    },
+
+    like: async (projectId: number | string) => {
+        const token = sessionStorage.getItem("portfolio-token");
+
+        const res = await api.post("/likes", {projectId} ,{
+            headers: {Authorization: `Bearer ${token}`},
+        }).catch((error) => {
+            return error.response;
+        });
+
+        return res
+    },
+
+    removeLike: async (projectId: number | string) => {
+        const token = sessionStorage.getItem("portfolio-token");
+
+        const res = await api.delete(`/likes/${projectId}`, {
+            headers: {Authorization: `Bearer ${token}`},
+        }).catch((error) => {
+            return error.response;
+        });
+
+        return res
+    },
+    
 };
 
 export default projetService;

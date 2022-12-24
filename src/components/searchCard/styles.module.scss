@@ -45,5 +45,22 @@
     .searchCardDescription{
         font-size: 14px;
     }
+
+    .searchCard {
+        width: 280px;
+    }
 }
 
+@media(max-width: 300px) {
+    .searchCardTitle {
+        font-size: 17px;
+    }
+
+    .searchCardDescription{
+        font-size: 14px;
+    }
+
+    .searchCard {
+        width: 240px;
+    }
+}

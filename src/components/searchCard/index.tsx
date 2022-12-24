@@ -8,7 +8,7 @@ interface props {
 
 const SearchCard = function ({ project }: props) {
     return <>
-        <Link className={styles.Link} href={`/projects/${project.id}`}>
+        <Link className={styles.Link} href={`/project/${project.id}`}>
             <div className={styles.searchCard}>
                 <img src={`${process.env.NEXT_PUBLIC_BASEURL}/${project.thumbnailUrl}`} 
                 alt={project.name} 

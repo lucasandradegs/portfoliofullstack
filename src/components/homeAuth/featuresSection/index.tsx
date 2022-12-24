@@ -20,14 +20,15 @@ const FeaturedSection = function () {
             
              data.data?.map((project: ProjectType) => (
                 <div className={styles.backGroundImg}
-                 key={project.id}>
+                 key={project.id}
+                 >
                     <HeaderAuth />
                     <Container className="pt-4">
                         <p className={styles.title}>{project.name}</p>
                         <p className={styles.description}>{project.synopsis}</p>
-                        <Link className={styles.textUnderline} href={`/projects/${project.id}`}>
+                        <Link className={styles.textUnderline} href={`/project/${project.id}`}>
                             <Button outline color="light" className={styles.button}>
-                                CONFIRA AGORA MEUS PROJETOS!
+                                CONFIRA AGORA OS PROJETOS COMPLETOS!
                                 <img src="/buttonPlay.svg" alt="buttomImg" className={styles.buttonImg} />
                             </Button>
                         </Link>
