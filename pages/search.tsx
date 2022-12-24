@@ -4,6 +4,9 @@ import HeaderAuth from "../src/components/common/headerAuth";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import projetService, { ProjectType } from "../src/services/projectService";
+import { Container } from "reactstrap";
+import SearchCard from "../src/components/searchCard";
+import Footer from "../src/components/common/footer";
 
 const Search = function () {
     const router = useRouter();
@@ -26,13 +29,24 @@ const Search = function () {
             <title>Portfólio - {searchName}</title>
             <link rel="shortcut icon" href="/favicon.svg" type="image/x-icon" />
         </Head>
-        <main>
+        <main className={styles.main}>
+            <div className={styles.headerFooterBg}>
             <HeaderAuth />
-            {searchResult?.map((project) => (
-	        <div key={project.id}>
-	            <p>{project.name}</p>
             </div>
-         ))}
+            {searchResult.length >= 1 ? (
+                <div className={styles.SearchResult}>
+                    <Container className="d-flex flex-wrap justify-content-center gap-5 py-4">
+                    {searchResult?.map((project) => (
+                        <SearchCard key={project.id} project={project}/>
+                 ))}
+                </Container>
+                </div>
+             ) : (
+            <p className={styles.noSearchResult}>Nenhum resultado encontrado</p>
+         )}
+            <div className={styles.headerFooterBg}>
+                <Footer />
+            </div>
         </main>
         </>
     );
