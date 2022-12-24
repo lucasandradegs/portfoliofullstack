@@ -80,6 +80,18 @@ const projetService = {
 
         return res
     },
+
+    getSearch: async (name: string)=> {
+        const token = sessionStorage.getItem("portfolio-token");
+    
+        const res = await api.get(`/projects/search?name=${name}`, {
+            headers: {Authorization: `Bearer ${token}`},
+        }).catch((error) => {
+            return error.response;
+        });
+
+        return res;
+    },
 };
 
 export default projetService;

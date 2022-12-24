@@ -4,12 +4,15 @@ import projetService, { ProjectType } from "../../../services/projectService";
 import HeaderAuth from "../../../components/common/headerAuth";
 import { Button, Container } from "reactstrap";
 import Link from "next/link";
+import PageSpinner from "../../common/spinner";
 
 const FeaturedSection = function () {
     const { data, error } = useSWR("/featured", projetService.getFeaturedProjects);
 
     if(error) return error;
-    if(!data) return (<><p>Loading...</p></>);
+    if(!data) {
+        return <PageSpinner />
+    }
 
     return (
         <>
