@@ -27,6 +27,7 @@ const ProjectPage = function () {
         }
     };
 
+
     useEffect(()=>{
         getProject();
     },[id])
@@ -115,7 +116,7 @@ const ProjectPage = function () {
                             <strong>Este projeto/conquista não tem vídeo de aprensetação! &#x1F606;</strong>
                         </p>
                     ) : (project?.videos?.map((video) =>(
-                        <VideoList key={video.id} video={video}/>
+                        <VideoList key={video.id} video={video} project={project}/>
                     )))}
                 </Container>
             </main>

@@ -1,12 +1,16 @@
 import styles from "./styles.module.scss";
 
-import { VideoType } from "../../services/projectService";
+import { ProjectType, VideoType } from "../../services/projectService";
+import { useRouter } from "next/router";
 
 interface props {
     video: VideoType;
+    project: ProjectType;
 }
 
-const VideoList = function ({ video }: props) {
+const VideoList = function ({ video, project }: props) {
+    const router = useRouter();
+
     const handleSecondsToMin = (totalSeconds: number) => {
         const minutes = Math.floor(totalSeconds / 60);
 
@@ -21,9 +25,13 @@ const VideoList = function ({ video }: props) {
         return result;
     };
 
+    const handleVideoPlayer = () =>{
+        router.push(`/project/video/${video.order - 1}?projectid=${project.id}`);  
+    };
+
     return (
         <>
-        <div className={styles.videoCard}>
+        <div className={styles.videoCard} onClick={handleVideoPlayer}>
             <div className={styles.videoOrderTime}>
                 <p className={styles.videoOrder}>Video de apresentação N.º {video.order}</p>
                 <p className={styles.videoTime}>{handleSecondsToMin(video.secondsLong)}</p>
