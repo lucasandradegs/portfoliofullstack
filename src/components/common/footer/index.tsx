@@ -6,7 +6,7 @@ const Footer = function () {
         <>
         <Container className={styles.footer}>
             <img src="/logoPortfolio.svg" alt="logoFooter" className={styles.footerLogo} />
-            <a href="http://portfoliofullstack.com" target={"_blank"} className={styles.footerLink}>PORTFOLIOFULLSTACK.COM</a>
+            <a href="http://portfoliofullstack.com.br" target={"_blank"} className={styles.footerLink}>PORTFOLIOFULLSTACK.COM.BR</a>
         </Container>
         </>
     );

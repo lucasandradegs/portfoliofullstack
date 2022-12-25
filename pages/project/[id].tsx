@@ -93,16 +93,10 @@ const ProjectPage = function () {
                 minHeight: "450px",}}>                   
                     <HeaderAuth />
                 </div>  
+                <div>
                 <Container className={styles.projectInfo}>
                     <p className={styles.projectTitle}>{project?.name}</p>
-                    <p className={styles.projectDescription}>{project?.synopsis}</p>
-                            <Button outline className={styles.projectBtn} disabled={project?.videos?.length === 0 ? true : false}>
-                                ASSISTIR APRESENTAÇÃO DO PROJETO
-                                <img src="/buttonPlay.svg"
-                                alt="buttonImg"
-                                className={styles.buttonImg}
-                            />
-                            </Button>                       
+                    <p className={styles.projectDescription}>{project?.synopsis}</p>                       
                                  
                     <div className={styles.interactions}>
                         {liked === false ? (
@@ -140,6 +134,7 @@ const ProjectPage = function () {
                         <VideoList key={video.id} video={video} project={project}/>
                     )))}
                 </Container>
+                </div>          
                 <Footer />
             </main>
         </>
