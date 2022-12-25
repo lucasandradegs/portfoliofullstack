@@ -1,17 +1,21 @@
 import styles from "../../styles/projectPage.module.scss";
 import Head from "next/head";
 import HeaderAuth from "../../src/components/common/headerAuth";
-import { useRouter } from "next/router";
+import { Router, useRouter } from "next/router";
 import { useState, useEffect } from "react";
-import projetService, { ProjectType } from "../../src/services/projectService";
+import projetService, { ProjectType, VideoType } from "../../src/services/projectService";
 import { Button, Container } from "reactstrap";
 import PageSpinner from "../../src/components/common/spinner";
 import VideoList from "../../src/components/videoList";
+import Footer from "../../src/components/common/footer";
+import Link from "next/link";
+
 
 const ProjectPage = function () {
     const [project, setProject] = useState<ProjectType> ();
     const [liked, setLiked] = useState(false);
     const [favorited, setFavorited] = useState(false);
+    const [loading, setLoading] = useState(true);
     const router = useRouter();
     const {id} = router.query;
 
@@ -30,7 +34,15 @@ const ProjectPage = function () {
 
     useEffect(()=>{
         getProject();
-    },[id])
+    },[id]);
+
+    useEffect(()=>{
+        if(!sessionStorage.getItem('portfolio-token')){
+            router.push("/login")
+        } else {
+            setLoading(false);
+        }
+    },[]);
 
     const handleLikeProject = async ()=> {
         if (typeof id !== "string") return;
@@ -56,9 +68,16 @@ const ProjectPage = function () {
         }
     };
 
+
+
     if (project === undefined) return <PageSpinner />;
 
-    console.log(project?.thumbnailUrl);
+
+    if (loading) {
+        return <PageSpinner />
+    };
+
+
     return (
         <>
             <Head>
@@ -77,12 +96,14 @@ const ProjectPage = function () {
                 <Container className={styles.projectInfo}>
                     <p className={styles.projectTitle}>{project?.name}</p>
                     <p className={styles.projectDescription}>{project?.synopsis}</p>
-                    <Button outline className={styles.projectBtn} disabled={project?.videos?.length === 0 ? true : false}>
-                        ASSISTIR APRESENTAÇÃO DO PROJETO
-                        <img src="/buttonPlay.svg"
-                        alt="buttonImg"
-                        className={styles.buttonImg} />
-                    </Button>
+                            <Button outline className={styles.projectBtn} disabled={project?.videos?.length === 0 ? true : false}>
+                                ASSISTIR APRESENTAÇÃO DO PROJETO
+                                <img src="/buttonPlay.svg"
+                                alt="buttonImg"
+                                className={styles.buttonImg}
+                            />
+                            </Button>                       
+                                 
                     <div className={styles.interactions}>
                         {liked === false ? (
                         <img src="/course/iconLike.svg" 
@@ -119,6 +140,7 @@ const ProjectPage = function () {
                         <VideoList key={video.id} video={video} project={project}/>
                     )))}
                 </Container>
+                <Footer />
             </main>
         </>
     );

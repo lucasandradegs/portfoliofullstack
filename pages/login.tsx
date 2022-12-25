@@ -101,7 +101,9 @@ const Login = function () {
                 </Button>
             </Form>
             <ToastComponent color={toastColor} isOpen={toastIsOpen} message={toastMessage}/>
+            
         </Container>
+
         <Footer />
         </main>
         </>

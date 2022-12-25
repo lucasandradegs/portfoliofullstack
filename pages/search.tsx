@@ -7,12 +7,13 @@ import projetService, { ProjectType } from "../src/services/projectService";
 import { Container } from "reactstrap";
 import SearchCard from "../src/components/searchCard";
 import Footer from "../src/components/common/footer";
+import PageSpinner from "../src/components/common/spinner";
 
 const Search = function () {
     const router = useRouter();
     const searchName: any = router.query.name;
     const [searchResult, setSearchResult] = useState<ProjectType[]>([]);
-
+    const [loading, setLoading] = useState(true);
     const searchProjects = async function () {
         const res = await projetService.getSearch(searchName);
         setSearchResult(res.data.projects);
@@ -22,6 +23,18 @@ const Search = function () {
         searchProjects();
     }, [searchName]);
 
+
+    useEffect(()=>{
+        if(!sessionStorage.getItem('portfolio-token')){
+            router.push("/login")
+        } else {
+            setLoading(false);
+        }
+    },[]);
+
+    if (loading) {
+        return <PageSpinner />
+    }
 
     return (
         <>

@@ -4,11 +4,27 @@ import Footer from "../src/components/common/footer";
 import HeaderAuth from "../src/components/common/headerAuth";
 import UserForm from "../src/components/profile/user";
 import styles from "../styles/profile.module.scss";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import PasswordFrom from "../src/components/profile/user/password";
+import { useRouter } from "next/router";
+import PageSpinner from "../src/components/common/spinner";
 
 const UserInfo = function () {
     const [form, setForm] = useState("userForm");
+    const router = useRouter();
+    const [loading, setLoading] = useState(true);
+
+    useEffect(()=>{
+        if(!sessionStorage.getItem('portfolio-token')){
+            router.push("/login")
+        } else {
+            setLoading(false);
+        }
+    },[]);
+
+    if (loading) {
+        return <PageSpinner />
+    }
 
     return (
         <>

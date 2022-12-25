@@ -11,8 +11,17 @@ import ReactPlayer from "react-player";
 const VideoPlayer = function () {
     const router = useRouter();
     const [project, setProject] = useState<ProjectType>()
+    const [loading, setLoading] = useState(true);
     const videoOrder = parseFloat(router.query.id?.toString() || "");
     const projectId = (router.query.projectid?.toString() || "");
+
+    useEffect(()=>{
+        if(!sessionStorage.getItem('portfolio-token')){
+            router.push("/login")
+        } else {
+            setLoading(false);
+        }
+    },[]);
 
     const getProject = async function () {
         if (typeof projectId !== "string") return;
@@ -40,6 +49,11 @@ const VideoPlayer = function () {
     }, [projectId]);
 
     if (project?.videos === undefined) return <PageSpinner />;
+
+
+    if (loading) {
+        return <PageSpinner />
+    }
 
     
     return (
